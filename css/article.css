@@ -1,0 +1,26 @@
+.article-box{
+    height:auto;
+    background-color:#ffffff;
+    padding:40px 60px;
+}
+.article_title{
+    text-align: center;
+    color:#006edb;
+    padding-bottom:20px;
+}
+.article-param{
+    text-align: center;
+    font-size:13px;
+    padding:12px;
+    color:#6a7275;
+    border-top:1px dotted #525252;
+    border-bottom:1px dotted #525252;
+}
+.article-content{
+    padding:20px 0;
+    text-indent:2em;
+    line-height:28px;
+}
+.textalign{
+    text-align:center;
+}

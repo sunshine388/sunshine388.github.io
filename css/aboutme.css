@@ -1,0 +1,12 @@
+.aboutme{
+    padding:40px 30px;
+    line-height:40px;
+}
+.aboutme p{
+    color:#ff5e5e;
+    font-size:25px;
+    line-height:50px;
+}
+.aboutme ul{
+    text-indent: 2em;
+}
