@@ -6,6 +6,16 @@
     <title>yxx个人博客</title>
     <link rel="stylesheet" href="..\..\css/common.css">
     <link rel="stylesheet" href="..\..\css/article.css">
+    <link rel="stylesheet" href="..\..\highlight/styles/a11y-dark.css">
+    <script src="..\..\highlight/highlight.pack.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+        hljs.initLineNumbersOnLoad({
+				// 让单行的时候也显示行号
+				singleLine: true
+			});
+    </script>
 </head>
 <body>
     <div class="top"></div>
@@ -32,21 +42,84 @@
     <div class="item-box w">
         <div class="item-left">
             <div class="article-box pane-bg-radius">
-                <h2 class="article_title">第一个博客网站，请多多关照</h2>
+                <h2 class="article_title">上下页之间的切换</h2>
                 <div class="article-param">
-                    发布时间：2020-8-17&nbsp;19:00&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                    分类：个人随笔&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    发布时间：2020-8-18&nbsp;14:00&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    分类：程序人生&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                     作者：yxx
                 </div>
-                <article class="article-content textalign">
-                    <p>这是一个利用github来建立的博客网站</p>
-                    <p>总体采用html+css编写，其中还用到了一点jQuery</p>
-                    <p>这是一个有温度的个人博客网站，分享前端学习的笔记及心得</p>
-                    
-                    <img src="../../image/welcome.jpg" width="250" height="250" class="pane-bg-radius"></a>
-                    <p>一个简陋的个人博客网站，部分功能未能实现</p>
-                    <p>初次编写的一个博客网站，请多多关照</p>
-                    <p>欢迎大家来交流讨论</p>
+                <article class="article-content">
+                    <p>上下页切换。采用五个盒子叠在一起，默认第一个显示。使用函数来实现页面的加减。</p>
+                    <p>实现如下所示上下页的切换。</p>
+                    <img src="../../image/noteimg/note2_1.png"  width="250" height="250" class="pane-bg-radius">
+                    <p>下面是代码</p>
+                    <pre>
+                        <code data-ln-single-line="true">
+&lt;body&gt;
+    &lt;button onclick="showdiv('top')"&gt;上一页&lt;/button&gt;
+    &lt;button onclick="showdiv('down')"&gt;下一页&lt;/button&gt;
+    &lt;div&gt;
+        &lt;div id="div1"
+            style="width:500px;height:500px;background-color: antiquewhite;
+            position: absolute;top: 50px;left:0px;display: block"&gt;
+            &lt;p&gt;我是第1页&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div id="div2"
+            style="width:500px;height:500px;background-color:rgb(223, 65, 209);
+            position: absolute;top: 50px;left:0px;display: none"&gt;
+            &lt;p&gt;我是第2页&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div id="div3"
+            style="width:500px;height:500px;background-color: rgb(64, 135, 163);
+            position: absolute;top: 50px;left:0px;display: none"&gt;
+            &lt;p&gt;我是第3页&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div id="div4"
+            style="width:500px;height:500px;background-color: rgb(160, 125, 79);
+            position: absolute;top: 50px;left:0px;display: none"&gt;
+            &lt;p&gt;我是第4页&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div id="div5"
+            style="width:500px;height:500px;background-color: rgb(240, 25, 25);
+            position: absolute;top: 50px;left:0px;display: none"&gt;
+            &lt;p&gt;我是第5页&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;script&gt;
+    let currentPage = 1;  //当前默认在第一页
+    function showdiv(changePage) {
+        if (changePage === 'top') {
+        //向上翻页
+        if (currentPage > 1) {
+            currentPage--;
+        }
+        else {
+            //已经是第一页了，不能再往前翻了
+            alert("已经是第一页了，不能再往前翻了");
+        }
+    }
+    else {
+        //向下翻页
+        if (currentPage === 5) {
+            //已经是最后一页了，不能再往后翻了
+            alert("已经是最后一页了，不能再往后翻了");
+        }
+        else {
+            currentPage++;
+        }
+    }
+    for (var i = 1; i < 6; i++) {
+        if (i === currentPage) {
+            $("#div" + i).show();
+        } else {
+            $("#div" + i).hide();
+        }
+    }
+}
+&lt;/script&gt;
+                        </code>
+                    </pre>
                 </article>
             </div>
         </div>
